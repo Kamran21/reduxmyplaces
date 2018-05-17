@@ -1,0 +1,25 @@
+/* body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+ */
+
+ @import 'base';
+
+ h1{
+    color: $color__primary;
+ }
+
+ .nav__link--active{
+    color: $color__primary--light;
+ }
+
+ .App-header__logo{
+    width: 100%; 
+    max-width: 200px;
+ }
+
+ .toolbar__btn--active{
+    color: $color__primary--light;
+ }
