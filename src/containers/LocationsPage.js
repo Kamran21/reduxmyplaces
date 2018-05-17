@@ -61,10 +61,10 @@ class LocationsPage extends Component {
                <h1>Locations</h1>
                <Toolbar title="Locations" action={this.state.action} updateAction={this.updateActionState} />
                <Locations locations={this.props.locations} />
-               <form onSubmit={this.onLocationSave}>
+               {/* <form onSubmit={this.onLocationSave}>
                    <input type="text" name="location_name" id="locationName" onChange={this.onNameChange} value={this.state.newLocation.name}/>
                    <button type="submit" disabled={this.state.newLocation.name===''}>Add</button>
-               </form>
+               </form> */}
            </div>   
         )
     }
