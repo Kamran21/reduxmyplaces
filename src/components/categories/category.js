@@ -2,7 +2,7 @@ import React from 'react';
 
 const Category = ({category}) => {
 
-    const {id, name} = category;
+    const {name} = category;
     
     return (
         <tr>

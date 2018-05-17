@@ -22,8 +22,27 @@ class CategoriesPage extends Component {
          }
 
         //Bind functions
-
+        this.onNameChange=this.onNameChange.bind(this);
+        this.onCategorySave=this.onCategorySave.bind(this);
     }
+    
+    onNameChange(evt){
+        this.updateFormState('name', evt.target.value);
+    }
+
+    updateFormState(name, val){
+        this.setState({ 'newCategory': {
+          [name]: val
+        }},()=>{console.log(this.state)});
+    }
+
+    onCategorySave(evt){
+        evt.preventDefault();
+        this.props.actions.createCategory(this.state.newCategory);
+        this.setState({ 
+             'newCategory' : { 'name' : ''}
+         });
+     }
 
     //Render
     render() { 
@@ -32,6 +51,10 @@ class CategoriesPage extends Component {
                <h1>Categories</h1>
                {/* <Toolbar title="categories"/> */}
                <Categories categories={this.props.categories} />
+               <form onSubmit={this.onCategorySave}>
+                   <input type="text" name="category_name" id="categoryName" onChange={this.onNameChange} value={this.state.newCategory.name}/>
+                   <button type="submit" disabled={this.state.newCategory.name===''}>Add</button>
+               </form>
            </div>   
         )
     }

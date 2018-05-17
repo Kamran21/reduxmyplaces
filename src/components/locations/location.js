@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Location = ({location}) => {
-    debugger;
+    // debugger;
     const {name, address, coordinates, category}=location;
 
     return (
@@ -12,6 +12,11 @@ const Location = ({location}) => {
             <td>
                 {category.name}
             </td> */}
+            <td>address</td>
+            <td>(Latitude,(Longitude)</td>
+            <td>
+                category
+            </td>
         </tr>
     )
 }

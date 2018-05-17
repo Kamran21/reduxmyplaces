@@ -1,10 +1,10 @@
 import React from 'react';
 import Location from "./location";
 
-const Locations = ({locations}) => {
+const Locations = ({locations, categories}) => {
 
     const locationItem=(location, index) => {
-        debugger;
+        // debugger;
         return (<Location location={location} key={index} />);
     }
 
@@ -14,9 +14,9 @@ const Locations = ({locations}) => {
             <thead>
                 <tr>
                     <th>Name</th>
-                    {/* <th>Address</th>
+                    <th>Address</th>
                     <th>Coordinates</th> 
-                    <th>Category</th> */}
+                    <th>Category</th>
                 </tr>
             </thead>
             <tbody>
