@@ -57,7 +57,7 @@ class LocationsPage extends Component {
         const categoriesSize=this.props.categoriesSize;
         const editable=this.props.locations.length;
         return (
-            categoriesSize === 0 ? ( <p>The list of locations and categories is empty create a category first and then you will be able to mange locations</p> ) : (
+            categoriesSize === 0 ? ( <p>The list of locations and categories is empty create a category first and then you will be able to manage locations</p> ) : (
             <div>
                <Toolbar title="Locations" action={this.state.action} updateAction={this.updateActionState} editable={editable} path="/addlocation"/>
                <Locations locations={this.props.locations} />

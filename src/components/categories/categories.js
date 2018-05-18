@@ -8,16 +8,17 @@ const Categories = ({categories}) => {
     }
 
     return (
+        categories.length === 0 ? (<p>No categories yet</p>) : (
         <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            { categories.map( categoryItem ) }
-        </tbody>
-    </table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                { categories.map( categoryItem ) }
+            </tbody>
+        </table>)
     )
 }
  
