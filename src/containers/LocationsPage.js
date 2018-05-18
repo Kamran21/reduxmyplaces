@@ -5,9 +5,9 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
 import * as locationActions from '../actions/locationActions';
-import Locations from '../components/locations/locations';
+
 import Toolbar from '../components/common/toolbar/Toolbar';
-import Categories from '../components/categories/categories';
+import Locations from '../components/locations/locations';
 
 
 class LocationsPage extends Component {
@@ -59,8 +59,7 @@ class LocationsPage extends Component {
         return (
             categoriesSize === 0 ? ( <p>The list of locations and categories is empty create a category first and then you will be able to mange locations</p> ) : (
             <div>
-               <h1>Locations</h1>
-               <Toolbar title="Locations" action={this.state.action} updateAction={this.updateActionState} editable={editable}/>
+               <Toolbar title="Locations" action={this.state.action} updateAction={this.updateActionState} editable={editable} path="/addlocation"/>
                <Locations locations={this.props.locations} />
            </div> )   
         )

@@ -23,3 +23,31 @@
  .toolbar__btn--active{
     color: $color__primary--light;
  }
+
+ table{
+   
+    tr{
+
+      td, th{
+        text-align: center;
+      }
+   }
+
+   tr:hover{
+     background-color: lightblue;
+   }
+  
+ }
+ 
+
+ footer{
+  
+  ul{
+    display:flex;
+    list-style: none;
+    li{
+      padding: 10px;
+    }
+  }
+
+ }

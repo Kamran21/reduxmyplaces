@@ -21,8 +21,9 @@ import CONSTANTS from "../constants";
         case CONSTANTS.DELETE_CATEGORY:
 
             return state.filter( item => {
-                if(item.id !== action.id)
+                if(item.id !== action.id){
                     return item;
+                }      
             });
 
         default:

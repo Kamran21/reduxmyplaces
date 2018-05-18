@@ -7,8 +7,8 @@ import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
 import * as locationActions from '../actions/locationActions';
-import Locations from '../components/locations/locations';
-import Toolbar from '../components/common/toolbar/Toolbar';
+
+
 
 class AddLocation extends Component {
 
@@ -26,7 +26,7 @@ class AddLocation extends Component {
         this.onCategoryChange=this.onCategoryChange.bind(this);
 
         this.updateFormState=this.updateFormState.bind(this);
-        this.onLocationSave=this.onLocationSave.bind(this);
+        this.onSave=this.onSave.bind(this);
 
     }
 
@@ -50,7 +50,7 @@ class AddLocation extends Component {
         this.setState( { [name] : val} );
     }
     
-    onLocationSave(evt){
+    onSave(evt){
        evt.preventDefault();
        this.props.actions.createLocation(this.state);
        this.setState({ 'onAdded' : true, 'name' : '', 'address' : '', 'coordinates' : '', 'category' : ''});
@@ -73,7 +73,7 @@ class AddLocation extends Component {
                         <h2>Add Location</h2>
                         { 
                             this.props.categories &&
-                            <form onSubmit={this.onLocationSave}>
+                            <form onSubmit={this.onSave}>
                                 <input type="text" name="location_name" id="locationName" onChange={this.onNameChange} value={this.state.name}/>
                                 <input type="text" name="location_address" id="locationAddress" onChange={this.onAddressChange} value={this.state.address}/>
                                 <input type="text" name="location_coordinates" id="locationCoordinates" onChange={this.onCoordinatesChange} value={this.state.coordinates}/>

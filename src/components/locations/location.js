@@ -13,7 +13,7 @@ const Location = ({location}) => {
                 {category.name}
             </td> */}
             <td>address</td>
-            <td>(Latitude,(Longitude)</td>
+            <td>(Latitude, Longitude)</td>
             <td>{category}</td>
         </tr>
     )

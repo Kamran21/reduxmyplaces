@@ -18,12 +18,14 @@ class CategoriesPage extends Component {
 
         //Init state
         this.state = { 
-            'newCategory' : { 'name' : ''}
+            'newCategory' : { 'name' : ''},
+            'action' : ''
          }
 
         //Bind functions
         this.onNameChange=this.onNameChange.bind(this);
         this.onCategorySave=this.onCategorySave.bind(this);
+        this.updateActionState=this.updateActionState.bind(this);
     }
     
     onNameChange(evt){
@@ -36,6 +38,10 @@ class CategoriesPage extends Component {
         }},()=>{console.log(this.state)});
     }
 
+    updateActionState(val){
+        this.setState( { 'action' : val } );
+    }
+
     onCategorySave(evt){
         evt.preventDefault();
         this.props.actions.createCategory(this.state.newCategory);
@@ -45,16 +51,13 @@ class CategoriesPage extends Component {
      }
 
     //Render
-    render() { 
+    render() {
+        const editable=this.props.categories.length;
         return ( 
            <div>
-               <h1>Categories</h1>
-               {/* <Toolbar title="categories"/> */}
+               <Toolbar title="Categories" action={this.state.action} updateAction={this.updateActionState} editable={editable} path="/addcategory"/>
                <Categories categories={this.props.categories} />
-               <form onSubmit={this.onCategorySave}>
-                   <input type="text" name="category_name" id="categoryName" onChange={this.onNameChange} value={this.state.newCategory.name}/>
-                   <button type="submit" disabled={this.state.newCategory.name===''}>Add</button>
-               </form>
+               
            </div>   
         )
     }

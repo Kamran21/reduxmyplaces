@@ -8,12 +8,20 @@ class App extends Component {
   render() {
     return (
       <div className="container-fluid">
+
         <header className="App-header">
           <img src={logo} className="App-header__logo" alt="logo" />
-          <h1 className="App-header__title">Welcome to WellDone app</h1>
-          <Nav/>
+          <h1 className="App-header__title">Welcome to WellDone app</h1> 
         </header>
-        <Routes/>
+
+        <div class="container">
+          <Routes/>
+        </div>
+
+        <footer>
+          <Nav/>
+        </footer>
+        
       </div>
     );
   }

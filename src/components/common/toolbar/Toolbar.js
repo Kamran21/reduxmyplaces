@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 
 const Toolbar = (props) => {
 
-    const { title, updateAction, action, editable } = props;
+    const { title, updateAction, action, editable, path } = props;
     
     function deleteHandler(evt) {
         evt.preventDefault();
@@ -39,7 +39,7 @@ const Toolbar = (props) => {
                 <button className={'toolbar__btn' + (addAttr(action, 'delete', 'toolbar__btn--active')) + addAttr(!!editable,false,'toolbar__btn--disabled')} onClick={deleteHandler} disabled={addAttr(!!editable,false,'disabled')}>-</button>
                 <button className={'toolbar__btn' + (addAttr(action, 'update', 'toolbar__btn--active')) + addAttr(!!editable,false,'toolbar__btn--disabled')} onClick={updateHandler} disabled={addAttr(!!editable,false,'disabled')}>u</button>
                 {/* <button className={'toolbar__btn ' + (action==='add' ? 'toolbar__btn toolbar__btn--active' : '')} onClick={addHandler}>+</button> */}
-                <NavLink to='/addlocation' activeClassName="nav__link--active" className='nav__link'><button className='toolbar__btn'>+</button></NavLink>
+                <NavLink to={path} activeClassName="nav__link--active" className='nav__link'><button className='toolbar__btn'>+</button></NavLink>
             </div>
         </div>
     );
