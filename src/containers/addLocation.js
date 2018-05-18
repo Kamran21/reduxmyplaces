@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 
+import {Redirect} from 'react-router-dom';
+
 import * as locationActions from '../actions/locationActions';
 import Locations from '../components/locations/locations';
 import Toolbar from '../components/common/toolbar/Toolbar';
@@ -15,7 +17,7 @@ class AddLocation extends Component {
         super(props);
         
         //Init state
-        this.state = { 'name' : '', 'address' : '', 'coordinates' : '', 'category' : ''};
+        this.state = { 'onAdded' : false, 'name' : '', 'address' : '', 'coordinates' : '', 'category' : ''};
 
         //Bind functions
         this.onNameChange=this.onNameChange.bind(this);
@@ -50,8 +52,8 @@ class AddLocation extends Component {
     
     onLocationSave(evt){
        evt.preventDefault();
-       this.props.actions.createLocation(this.state.newLocation);
-       this.setState({ 'name' : '', 'address' : '', 'coordinates' : '', 'category' : ''});
+       this.props.actions.createLocation(this.state);
+       this.setState({ 'onAdded' : true, 'name' : '', 'address' : '', 'coordinates' : '', 'category' : ''});
     }
 
     //Render
@@ -60,24 +62,36 @@ class AddLocation extends Component {
     }
 
     render(){ 
-        return ( 
-            <div>
-                <h2>Add Location</h2>
-                { 
-                this.props.categories &&
-                <form onSubmit={this.onLocationSave}>
-                    <input type="text" name="location_name" id="locationName" onChange={this.onNameChange} value={this.state.name}/>
-                    <input type="text" name="location_address" id="locationAddress" onChange={this.onAddressChange} value={this.state.address}/>
-                    <input type="text" name="location_coordinates" id="locationCoordinates" onChange={this.onCoordinatesChange} value={this.state.coordinates}/>
 
-                    <select onChange={this.onCategoryChange}>
-                        <option value="">-select-</option>
-                        {this.props.categories.map(this.categoryItem)}
-                    </select>
-                    <button type="submit" disabled={this.state.name==='' || this.state.category===''}>Add</button>
-                </form>
-                }
-            </div>   
+        const added = this.state.onAdded;
+
+        return (
+            <div>
+            {
+                added ? ( <Redirect to="/"/> ) : (
+                    <div>
+                        <h2>Add Location</h2>
+                        { 
+                            this.props.categories &&
+                            <form onSubmit={this.onLocationSave}>
+                                <input type="text" name="location_name" id="locationName" onChange={this.onNameChange} value={this.state.name}/>
+                                <input type="text" name="location_address" id="locationAddress" onChange={this.onAddressChange} value={this.state.address}/>
+                                <input type="text" name="location_coordinates" id="locationCoordinates" onChange={this.onCoordinatesChange} value={this.state.coordinates}/>
+
+                                <select onChange={this.onCategoryChange}>
+                                    <option value="select" defaultValue="select">-select-</option>
+                                    {this.props.categories.map(this.categoryItem)}
+                                </select>
+                                <button type="submit" disabled={this.state.name==='' || this.state.category===''}>Add</button>
+                            </form>
+                        }
+                    </div>
+
+                )
+                
+            }
+            </div>
+              
         )
     }
 

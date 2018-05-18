@@ -8,6 +8,8 @@ import createHistory from 'history/createBrowserHistory';
 
 import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-redux';//, push
 
+import logger from 'redux-logger';
+
 import reducers from './reducers'; // Or wherever you keep your reducers
 
 import registerServiceWorker from './registerServiceWorker';
@@ -15,6 +17,8 @@ import registerServiceWorker from './registerServiceWorker';
 import './assets/styles/index.css';
 
 import App from './containers/App'
+
+import * as storage from './localstorage';
 
 
 // Create a history of your choosing (we're using a browser history in this case)
@@ -24,16 +28,22 @@ const history = createHistory();
 const middleware = routerMiddleware(history);
 
 // Add the reducer to your store on the `router` key
-// Also apply our middleware for navigating
+// Also apply our middleware for navigating + logger, 
+// All reducers will be reflected on the Redux dev tools and by the logger middleware
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
+const persistedState = storage.loadState();
 const store = createStore(
   combineReducers({
     ...reducers,
     router: routerReducer
-  }),
-  composeEnhancers( applyMiddleware(middleware) )
+  }), persistedState, 
+  composeEnhancers( applyMiddleware(middleware, logger) )
 );
+
+store.subscribe(() => {
+  storage.saveState( store.getState() )
+});
 
 // Now you can dispatch navigation actions from anywhere!
 // store.dispatch(push('/foo'))
