@@ -4,8 +4,7 @@ import Location from "./location";
 const Locations = ({locations, categories}) => {
 
     const locationItem=(location, index) => {
-        // debugger;
-        return (<Location location={location} key={index} />);
+        return (<Location location={location} key={location.id} />);
     }
 
     return (

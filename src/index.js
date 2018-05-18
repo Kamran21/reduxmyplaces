@@ -20,6 +20,8 @@ import App from './containers/App'
 
 import * as storage from './localstorage';
 
+import throttle from 'lodash/throttle';
+
 
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory();
@@ -41,9 +43,9 @@ const store = createStore(
   composeEnhancers( applyMiddleware(middleware, logger) )
 );
 
-store.subscribe(() => {
+store.subscribe(throttle(() => {
   storage.saveState( store.getState() )
-});
+}),1000);
 
 // Now you can dispatch navigation actions from anywhere!
 // store.dispatch(push('/foo'))

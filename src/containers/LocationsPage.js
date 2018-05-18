@@ -51,10 +51,6 @@ class LocationsPage extends Component {
     }
 
     //Render
-    locationItem(location, index){
-        return <li key={index}>{location.name}</li>;
-    }
-
     render(){ 
         return ( 
             <div>

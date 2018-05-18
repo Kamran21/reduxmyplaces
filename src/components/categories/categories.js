@@ -4,8 +4,7 @@ import Category from "./category";
 const Categories = ({categories}) => {
 
     const categoryItem=(category, index) => {
-        // debugger;
-        return (<Category category={category} key={index} />);
+        return (<Category category={category} key={category.id} />);
     }
 
     return (
