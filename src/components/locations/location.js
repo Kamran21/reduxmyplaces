@@ -14,9 +14,7 @@ const Location = ({location}) => {
             </td> */}
             <td>address</td>
             <td>(Latitude,(Longitude)</td>
-            <td>
-                category
-            </td>
+            <td>{category}</td>
         </tr>
     )
 }

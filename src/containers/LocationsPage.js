@@ -7,6 +7,8 @@ import {connect} from 'react-redux';
 import * as locationActions from '../actions/locationActions';
 import Locations from '../components/locations/locations';
 import Toolbar from '../components/common/toolbar/Toolbar';
+import Categories from '../components/categories/categories';
+
 
 class LocationsPage extends Component {
 
@@ -51,17 +53,16 @@ class LocationsPage extends Component {
     }
 
     //Render
-    render(){ 
-        return ( 
+    render(){
+        const categoriesSize=this.props.categoriesSize;
+        const editable=this.props.locations.length;
+        return (
+            categoriesSize === 0 ? ( <p>The list of locations and categories is empty create a category first and then you will be able to mange locations</p> ) : (
             <div>
                <h1>Locations</h1>
-               <Toolbar title="Locations" action={this.state.action} updateAction={this.updateActionState} />
+               <Toolbar title="Locations" action={this.state.action} updateAction={this.updateActionState} editable={editable}/>
                <Locations locations={this.props.locations} />
-               {/* <form onSubmit={this.onLocationSave}>
-                   <input type="text" name="location_name" id="locationName" onChange={this.onNameChange} value={this.state.newLocation.name}/>
-                   <button type="submit" disabled={this.state.newLocation.name===''}>Add</button>
-               </form> */}
-           </div>   
+           </div> )   
         )
     }
 
@@ -70,13 +71,18 @@ class LocationsPage extends Component {
 //Prop Types validation
 LocationsPage.propTypes={
     locations: PropTypes.array.isRequired,
+    categoriesSize: PropTypes.number,
     actions: PropTypes.object.isRequired
 };
 
 //Redux connect
 const mapStateToProps = (state, ownProps) => {
 
-    return { 'locations': state.locations };
+    return {
+        'locations': state.locations,
+        'categoriesSize': state.categories.length,
+    };
+
 };
 
 const mapDispatchToProps = (dispatch) => {

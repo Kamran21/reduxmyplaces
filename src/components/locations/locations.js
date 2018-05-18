@@ -8,7 +8,7 @@ const Locations = ({locations, categories}) => {
     }
 
     return (
-        
+        locations.length === 0 ? (<p>No locations yet</p>) : (
         <table>
             <thead>
                 <tr>
@@ -21,7 +21,7 @@ const Locations = ({locations, categories}) => {
             <tbody>
                 { locations.map( locationItem ) }
             </tbody>
-        </table>
+        </table>)
     )
 }
  
