@@ -18,40 +18,18 @@ class LocationsPage extends Component {
         
         //Init state
         this.state = { 
-                        'newLocation' : { 'name' : '', 'address' : '', 'coordinates' : {}, 'category' : { 'name' : '' } },
-                        'action' : ''
-                     };
+            'action' : ''
+         }
 
         //Bind functions
-        this.onNameChange=this.onNameChange.bind(this);
-        this.updateFormState=this.updateFormState.bind(this);
-        this.onLocationSave=this.onLocationSave.bind(this);
         this.updateActionState=this.updateActionState.bind(this);
 
-    }
-
-    onNameChange(evt){
-        this.updateFormState('name', evt.target.value);
-    }
-
-    updateFormState(name, val){
-        this.setState({ 'newLocation': {
-          [name]: val
-        }},()=>{console.log(this.state)});
     }
 
     updateActionState(val){
         this.setState( { 'action' : val } );
     }
     
-    onLocationSave(evt){
-       evt.preventDefault();
-       this.props.actions.createLocation(this.state.newLocation);
-       this.setState({ 
-            'newLocation' : { 'name' : '', 'address' : '', 'coordinates' : {}, 'category' : { 'name' :'' } }
-        });
-    }
-
     //Render
     render(){
         const categoriesSize=this.props.categoriesSize;

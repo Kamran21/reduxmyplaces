@@ -11,7 +11,7 @@ class App extends Component {
 
         <header className="App-header">
           <img src={logo} className="App-header__logo" alt="logo" />
-          <h1 className="App-header__title">Welcome to WellDone app</h1> 
+          <h1 className="App-header__title">Welcome To WellDone App</h1> 
         </header>
 
         <div class="container">

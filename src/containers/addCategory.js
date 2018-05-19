@@ -8,8 +8,6 @@ import {Redirect} from 'react-router-dom';
 
 import * as categoryActions from '../actions/categoryActions';
 
-import Toolbar from '../components/common/toolbar/Toolbar';
-
 class AddCategory extends Component {
 
     constructor(props) {

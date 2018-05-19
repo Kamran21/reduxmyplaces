@@ -7,41 +7,47 @@
 
  @import 'base';
 
- h1{
-    color: $color__primary;
- }
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
- .nav__link--active{
-    color: $color__primary--light;
- }
+h1{
+  color: $color__primary;
+}
 
- .App-header__logo{
-    width: 100%; 
-    max-width: 200px;
- }
+.nav__link--active{
+  color: $color__primary--light;
+}
 
- .toolbar__btn--active{
-    color: $color__primary--light;
- }
+.App-header__logo{
+  width: 100%; 
+  max-width: 200px;
+}
 
- table{
-   
-    tr{
+.toolbar__btn--active{
+  color: $color__primary--light;
+}
 
-      td, th{
-        text-align: center;
-      }
-   }
-
-   tr:hover{
-     background-color: lightblue;
-   }
+table{
   
- }
- 
+  tr{
 
- footer{
-  
+    td, th{
+      text-align: center;
+    }
+  }
+
+  tr:hover{
+    background-color: lightblue;
+  }
+
+}
+
+
+footer{
+
   ul{
     display:flex;
     list-style: none;
@@ -49,5 +55,4 @@
       padding: 10px;
     }
   }
-
- }
+}

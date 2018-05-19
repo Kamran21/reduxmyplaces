@@ -18,37 +18,18 @@ class CategoriesPage extends Component {
 
         //Init state
         this.state = { 
-            'newCategory' : { 'name' : ''},
             'action' : ''
          }
 
-        //Bind functions
-        this.onNameChange=this.onNameChange.bind(this);
-        this.onCategorySave=this.onCategorySave.bind(this);
+        //Bind functions 
         this.updateActionState=this.updateActionState.bind(this);
     }
     
-    onNameChange(evt){
-        this.updateFormState('name', evt.target.value);
-    }
-
-    updateFormState(name, val){
-        this.setState({ 'newCategory': {
-          [name]: val
-        }},()=>{console.log(this.state)});
-    }
 
     updateActionState(val){
         this.setState( { 'action' : val } );
     }
 
-    onCategorySave(evt){
-        evt.preventDefault();
-        this.props.actions.createCategory(this.state.newCategory);
-        this.setState({ 
-             'newCategory' : { 'name' : ''}
-         });
-     }
 
     //Render
     render() {

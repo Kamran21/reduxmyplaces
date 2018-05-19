@@ -10,21 +10,11 @@ import CONSTANTS from "../constants";
         
         case CONSTANTS.UPDATE_LOCATION:
             
-            return state.map(item => {
-                if(item.id !== action.location.id){
-                    return item;
-                } 
-
-                return {...action.location};
-            });
+            return state.map(item => item.id !== action.location.id ? item : {...action.location} );
 
         case CONSTANTS.DELETE_CATEGORY:
 
-            return state.filter( item => {
-                if(item.id !== action.id){
-                    return item;
-                }      
-            });
+            return state.filter( item => item.id !== action.id );
 
         default:
             return state;

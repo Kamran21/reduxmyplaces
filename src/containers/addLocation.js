@@ -8,8 +8,6 @@ import {Redirect} from 'react-router-dom';
 
 import * as locationActions from '../actions/locationActions';
 
-
-
 class AddLocation extends Component {
 
     constructor(props) {

@@ -10,21 +10,11 @@ const categoryReducer = (state = [], action) => {
 
         case CONSTANTS.UPDATE_CATEGORY:
 
-            return state.map(item => {
-                if(item.id !== action.category.id){
-                    return item;
-                } 
-
-                return {...action.category};
-            });
+            return state.map( item => item.id !== action.category.id ? item : {...action.category} );
 
         case CONSTANTS.DELETE_CATEGORY:
 
-            return state.filter( item => {
-                if(item.id !== action.id){
-                    return item;
-                }
-            });
+            return state.filter( item => item.id !== action.id ); 
 
         default:
             return state;
